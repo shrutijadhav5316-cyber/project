@@ -52,6 +52,14 @@ export default function App() {
   // Current logged in owner
   const [currentOwner, setCurrentOwner] = useState<OwnerUser | null>(null);
 
+  // In-app toast notification for iframe compatibility
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3500);
+  };
+
   // Reference for scrolling to mess listings
   const messesSectionRef = useRef<HTMLDivElement>(null);
 
@@ -176,7 +184,7 @@ export default function App() {
         return prev.filter((id) => id !== mess.id);
       }
       if (prev.length >= 3) {
-        alert('You can compare up to 3 messes simultaneously.');
+        showToast('You can compare up to 3 messes simultaneously.');
         return prev;
       }
       return [...prev, mess.id];
@@ -355,6 +363,14 @@ export default function App() {
             setSelectedMessForTrial(mess);
           }}
         />
+      )}
+
+      {/* In-app Toast Banner */}
+      {toastMessage && (
+        <div className="fixed top-24 right-6 z-50 bg-[#191919] text-[#FFD400] px-4 py-3 rounded-2xl shadow-2xl border-2 border-[#FFD400] text-xs font-black flex items-center gap-2 animate-bounce">
+          <AlertCircle className="w-4 h-4 text-[#F0442B]" />
+          <span>{toastMessage}</span>
+        </div>
       )}
 
       {/* 7. Book Free Trial / Reserve Seat Modal */}
