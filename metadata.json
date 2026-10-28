@@ -1,0 +1,6 @@
+{
+  "name": "Mess Finding System — Find Your Daily Meal, Sorted",
+  "description": "Discover, compare, and connect with authentic Maharashtrian messes near college campus in Kasba Bawda, Kolhapur. View weekly menus, live seat availability, pricing, and student reviews.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
